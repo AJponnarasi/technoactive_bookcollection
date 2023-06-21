@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <label class="mb-2">Select Author</label>
+
+            <ng-select [items]="authorList" (change)="loadBookList()" placeholder="Please select the author"
+                bindLabel="name" bindValue="name" [(ngModel)]="selectedAuthor">
+            </ng-select>
+        </div>
+    </div>
+
+    <div class="col-md-12 mt-5">
+        <ng-container *ngIf="booksList.length > 0 ">
+            <div class="d-flex justify-content-between">
+                <div class="card" [routerLink]="['/singlebook']" [queryParams]="book" *ngFor="let book of booksList | slice:0:5" style="width: 18rem;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <span>Title : </span><p class="fw-500 d-inline"> {{book.title}}</p>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                 <span>ISBN : </span> <p class="fw-500 d-inline">{{book.isbn ? book.isbn[0] : '-'}}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <span>Publishers : </span> <p class="fw-500 d-inline">{{book.publisher ? book.publisher[0]: '-'}}</p>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ng-container>
+        <ng-container *ngIf="booksList.length > 5">
+            <p class="text-end mt-3">Author has more than 5 books</p>
+        </ng-container>
+          <div class="text-center pt-3"  *ngIf="showSpinner">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            Processing...
+          </div>
+          <div class="alert alert-danger" *ngIf="showAlert" role="alert">
+            A simple danger alert—check it out!
+          </div>
+    </div>
+</div>

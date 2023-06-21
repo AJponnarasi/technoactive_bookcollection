@@ -1,0 +1,30 @@
+<div class="container">
+    <button class="btn btn-primary float-end"  routerLink="/"> Back</button>
+    <div class="row">
+        <div class="col-md-8 mx-auto py-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img [src]="cover_img" class="img_style" alt="book_image">
+                        </div>
+                        <div class="col-md-8" *ngIf="bookDetails">
+                            <div class="mb-2">
+                                <span>Author : </span> <p class="fw-500 d-inline">{{author_name}}</p>
+                            </div>
+                            <div class="mb-2">
+                            <span>Description : </span> <p class="fw-500 d-inline">{{description ? description : '-'}}</p>
+                            </div>
+                            <div class="mb-2">
+                            <span>Title : </span> <p class="fw-500 d-inline" >{{title}}</p>
+                            </div>
+                            <div class="mb-2">
+                            <span>Table of content : </span> <p class="fw-500 d-inline">{{content ? content : '-'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
